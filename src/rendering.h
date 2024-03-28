@@ -8,4 +8,13 @@ struct Color {
     Uint8 alpha;
 };
 
-void setRenderColor(SDL_Renderer* renderer, Color color);
+class Graphics {
+public:
+	SDL_Window* window;
+	SDL_Renderer* renderer;
+
+	Graphics();
+	~Graphics();
+};
+
+void SetRenderColor(SDL_Renderer* renderer, Color color);
