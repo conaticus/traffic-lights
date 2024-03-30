@@ -1,22 +1,21 @@
 #pragma once
+#include "Graphics.h"
 
-enum LightState {
-    RED,
-    YELLOW,
-    GREEN,
-    OFF
+enum CycleStage {
+    STOP,
+    READY_GO,
+    GO,
+    READY_STOP
 };
 
-const int LIGHT_CYCLE[4][3] = {
-    { RED, OFF, OFF },
-    { RED, YELLOW, OFF },
-    { OFF, OFF, GREEN },
-    { OFF, YELLOW, OFF }
-};
-
+// This class controls light cycle for one traffic light.
 class LightCycle {
 public:
     int cycleStage;
+    LightCycle(CycleStage cycleStage) : cycleStage(cycleStage) {}
 
-    LightCycle(int cycleStage) : cycleStage(cycleStage) {}
+    void NextStage();
+
+    // Returns the three light colors in order of each light (top to bottom).
+    const Color* GetLightColors();
 };

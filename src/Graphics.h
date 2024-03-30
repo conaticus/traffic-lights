@@ -11,6 +11,11 @@ struct Color {
     Color(Uint8 r = 0, Uint8 g = 0, Uint8 b = 0, Uint8 a = 255) : red(r), green(g), blue(b), alpha(a) {}
 };
 
+const Color COLOR_RED(255, 0, 0);
+const Color COLOR_YELLOW(255, 0, 0);
+const Color COLOR_GREEN(255, 255, 0);
+const Color COLOR_GRAY(22, 22, 22);
+
 class Graphics {
 public:
 	SDL_Window* window;
