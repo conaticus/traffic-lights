@@ -90,7 +90,7 @@ void TrafficLights::DrawBulbs(SDL_Rect& lightBox, LightCycle& cycle) {
 
 	for (int i = 0; i < 3; i++) {
 		int xPos = lightBox.x + (lightBox.w / 2);
-		int yPos = lightBox.y + (i * spacing) + (circleRadius + (circleRadius/2));
+		int yPos = lightBox.y + (i * spacing) + (circleRadius + 1.5);
 		app.SetDrawColor(const_cast<Color&>(lightColors[i]));
 		app.FillCircle(circleRadius, xPos, yPos);
 	}
