@@ -14,22 +14,23 @@ SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
 
 # Add the SDL2 library path
-LDLIBS := -L$(LIB_DIR) -lSDL2main -lSDL2
+LDLIBS := -L$(LIB_DIR) -lmingw32 -lSDL2main -lSDL2
 
 # Build executable
 $(BUILD_DIR):
-	mkdir $(BUILD_DIR)
+	mkdir -p $(BUILD_DIR)
 
-$(EXECUTABLE): $(OBJECTS)
+$(BUILD_DIR)/$(EXECUTABLE): $(OBJECTS) | $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@ $(LDLIBS)
 
 # Compile source files
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
-run: $(EXECUTABLE)
-	./$(EXECUTABLE)
+# Run
+run: $(BUILD_DIR)/$(EXECUTABLE)
+	./$<
 
 # Clean
 clean:
-	rm -f $(BUILD_DIR)/*.o $(EXECUTABLE)
+	rm -rf $(BUILD_DIR) $(EXECUTABLE)
