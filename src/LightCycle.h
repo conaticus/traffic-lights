@@ -2,7 +2,7 @@
 #include "Graphics.h"
 
 enum CycleStage {
-    STOP,
+    STOP = 1,
     READY_GO,
     GO,
     READY_STOP
