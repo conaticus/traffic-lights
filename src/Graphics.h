@@ -12,8 +12,8 @@ struct Color {
 };
 
 const Color COLOR_RED(255, 0, 0);
-const Color COLOR_YELLOW(255, 0, 0);
-const Color COLOR_GREEN(255, 255, 0);
+const Color COLOR_YELLOW(255, 255, 0);
+const Color COLOR_GREEN(0, 255, 0);
 const Color COLOR_GRAY(22, 22, 22);
 
 class Graphics {

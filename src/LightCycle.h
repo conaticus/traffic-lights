@@ -1,8 +1,9 @@
 #pragma once
 #include "Graphics.h"
+#include <iostream>
 
 enum CycleStage {
-    STOP = 1,
+    STOP,
     READY_GO,
     GO,
     READY_STOP

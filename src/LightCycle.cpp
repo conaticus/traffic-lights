@@ -9,8 +9,8 @@ const Color LIGHT_CYCLE[4][3] = {
 };
 
 void LightCycle::NextStage() {
-    if (cycleStage == 4) {
-        cycleStage = 1;
+    if (cycleStage == 3) {
+        cycleStage = 0;
         return;
     }
 
@@ -18,5 +18,5 @@ void LightCycle::NextStage() {
 }
 
 const Color* LightCycle::GetLightColors() {
-    return LIGHT_CYCLE[cycleStage - 1];
+    return LIGHT_CYCLE[cycleStage];
 }
