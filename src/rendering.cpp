@@ -2,21 +2,13 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
-const Color ColorRed = {252, 3, 3, 255};
-
-void SetRenderColor(SDL_Renderer* renderer, Color color) {
-	SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
-}
-
-#define WINDOW_SIZE 800
-
-Graphics::Graphics() {
+Graphics::Graphics(int width, int height) : width(width), height(height) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		std::cout << "Failed to initialise SDL: " << SDL_GetError() << "\n";
 		exit(1);
 	}
 
-	SDL_CreateWindowAndRenderer(WINDOW_SIZE, WINDOW_SIZE, 0, &window, &renderer);
+	SDL_CreateWindowAndRenderer(width, height, 0, &window, &renderer);
 
 	if (window == nullptr) {
 		std::cout << "Could not create Window: " << SDL_GetError() << "\n";
@@ -27,19 +19,18 @@ Graphics::Graphics() {
 		std::cout << "Could not create Renderer: " << SDL_GetError() << "\n";
 		exit(1);
 	}
+}
 
-	while (true) {
-		SDL_Event event;
+void Graphics::SetDrawColor(Color& color) {
+	SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
+}
 
-		while (SDL_PollEvent(&event)) {
-			switch (event.type) {
-				case SDL_QUIT:
-					delete this;
-					break;
-				default: break;
-			}
-		}
-	}
+void Graphics::FillRect(SDL_Rect& rect) {
+	SDL_RenderFillRect(renderer, &rect);
+}
+
+void Graphics::Draw() {
+	SDL_RenderPresent(renderer);
 }
 
 Graphics::~Graphics() {

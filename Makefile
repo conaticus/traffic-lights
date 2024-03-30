@@ -30,7 +30,3 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 # Run
 run: $(BUILD_DIR)/$(EXECUTABLE)
 	./$<
-
-# Clean
-clean:
-	rm -rf $(BUILD_DIR) $(EXECUTABLE)
