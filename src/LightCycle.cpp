@@ -1,7 +1,11 @@
 #include "LightCycle.h"
 #include "Graphics.h"
 
-const Color LIGHT_CYCLE[4][3] = {
+#define CYCLE_LENGTH 6
+
+const Color LIGHT_CYCLE[CYCLE_LENGTH][3] = {
+    { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
+    { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
     { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
     { COLOR_RED, COLOR_YELLOW, COLOR_GRAY },
     { COLOR_GRAY, COLOR_GRAY, COLOR_GREEN },
@@ -9,7 +13,7 @@ const Color LIGHT_CYCLE[4][3] = {
 };
 
 void LightCycle::NextStage() {
-    if (cycleStage == 3) {
+    if (cycleStage == CYCLE_LENGTH - 1) {
         cycleStage = 0;
         return;
     }

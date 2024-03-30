@@ -18,7 +18,7 @@ LDLIBS := -L$(LIB_DIR) -lmingw32 -lSDL2main -lSDL2
 
 # Build executable
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+	mkdir $(BUILD_DIR)
 
 $(BUILD_DIR)/$(EXECUTABLE): $(OBJECTS) | $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@ $(LDLIBS)

@@ -3,10 +3,8 @@
 #include <iostream>
 
 enum CycleStage {
-    STOP,
-    READY_GO,
-    GO,
-    READY_STOP
+    STOP = 0,
+    READY_GO = 3,
 };
 
 // This class controls light cycle for one traffic light.
