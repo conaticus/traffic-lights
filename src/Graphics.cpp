@@ -1,4 +1,4 @@
-#include "rendering.h"
+#include "Graphics.h"
 #include <SDL2/SDL.h>
 #include <iostream>
 
@@ -29,7 +29,20 @@ void Graphics::FillRect(SDL_Rect& rect) {
 	SDL_RenderFillRect(renderer, &rect);
 }
 
-void Graphics::Draw() {
+void Graphics::FillCircle(int radius, int x, int y) {
+    for (int w = 0; w < radius * 2; w++)
+    {
+        for (int h = 0; h < radius * 2; h++)
+        {
+            int dx = radius - w; // horizontal offset
+            int dy = radius - h; // vertical offset
+            if ((dx*dx + dy*dy) <= (radius * radius))
+                SDL_RenderDrawPoint(renderer, x + dx, y + dy);
+        }
+    }
+}
+
+void Graphics::Render() {
 	SDL_RenderPresent(renderer);
 }
 

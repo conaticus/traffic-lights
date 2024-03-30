@@ -22,6 +22,7 @@ public:
 	Graphics(int width, int height);
     void SetDrawColor(Color& color);
     void FillRect(SDL_Rect& rect);
-    void Draw();
+    void FillCircle(int radius, int x, int y);
+    void Render();
 	~Graphics();
 };
