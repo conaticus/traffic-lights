@@ -1,7 +1,7 @@
 #include "LightCycle.h"
 #include "Graphics.h"
 
-#define CYCLE_LENGTH 6
+constexpr size_t CYCLE_LENGTH = 6;
 
 const Color LIGHT_CYCLE[CYCLE_LENGTH][3] = {
     { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
