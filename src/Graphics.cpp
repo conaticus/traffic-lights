@@ -21,11 +21,11 @@ Graphics::Graphics(int width, int height) : width(width), height(height) {
 	}
 }
 
-void Graphics::SetDrawColor(Color& color) {
+void Graphics::SetDrawColor(const Color& color) {
 	SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
 }
 
-void Graphics::FillRect(SDL_Rect& rect) {
+void Graphics::FillRect(const SDL_Rect& rect) {
 	SDL_RenderFillRect(renderer, &rect);
 }
 

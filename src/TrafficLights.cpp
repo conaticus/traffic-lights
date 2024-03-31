@@ -4,8 +4,6 @@
 #include "Graphics.h"
 #include "LightCycle.h"
 
-using namespace std::chrono;
-
 constexpr double HEIGHT_PERCENTAGE = 0.9;
 constexpr double WIDTH_PERCENTAGE = 0.4;
 constexpr int TRAFFIC_LIGHT_OFFSET = 50;
@@ -21,6 +19,8 @@ TrafficLights::TrafficLights() : app(Graphics(960, 800)) {
 }
 
 void TrafficLights::DrawTrafficLights() {
+	using namespace std::chrono;
+
     SDL_Rect lightBoxLeft, lightBoxRight;
     std::tie(lightBoxLeft, lightBoxRight) = DrawBoxes();
 
@@ -79,19 +79,20 @@ std::pair<SDL_Rect, SDL_Rect> TrafficLights::DrawBoxes() {
 
 	app.FillRect(lightBoxRight);
 
-    return { std::move(lightBoxLeft), std::move(lightBoxRight) };
+    return { lightBoxLeft, lightBoxRight };
 }
 
 void TrafficLights::DrawBulbs(SDL_Rect& lightBox, LightCycle& cycle) {
-	int circleRadius = static_cast<int>(lightBox.w * 0.22);
-	int spacing = (lightBox.h) / 3;
+	constexpr float RADIUS_PERCENTAGE = 0.22;
+	int circleRadius = static_cast<int>(lightBox.w * RADIUS_PERCENTAGE);
+	int spacing = lightBox.h / 3;
 
-	const Color* lightColors = cycle.GetLightColors();
+	LightColorsArray lightColors = cycle.GetLightColors();
 
 	for (int i = 0; i < 3; i++) {
 		int xPos = lightBox.x + (lightBox.w / 2);
-		int yPos = lightBox.y + (i * spacing) + (circleRadius + 1.5);
-		app.SetDrawColor(const_cast<Color&>(lightColors[i]));
+		int yPos = lightBox.y + (i * spacing) + (circleRadius * 1.5);
+		app.SetDrawColor(lightColors[i]);
 		app.FillCircle(circleRadius, xPos, yPos);
 	}
 }

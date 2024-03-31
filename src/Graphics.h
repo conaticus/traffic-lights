@@ -25,8 +25,8 @@ public:
     int height;
 
 	Graphics(int width, int height);
-    void SetDrawColor(Color& color);
-    void FillRect(SDL_Rect& rect);
+    void SetDrawColor(const Color& color);
+    void FillRect(const SDL_Rect& rect);
     void FillCircle(int radius, int x, int y);
     void Render();
 	~Graphics();

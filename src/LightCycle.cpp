@@ -1,16 +1,16 @@
-#include "LightCycle.h"
 #include "Graphics.h"
+#include "LightCycle.h"
 
-constexpr size_t CYCLE_LENGTH = 6;
+constexpr int CYCLE_LENGTH = 6;
 
-const Color LIGHT_CYCLE[CYCLE_LENGTH][3] = {
+const std::array<LightColorsArray, CYCLE_LENGTH> LIGHT_CYCLE {{
     { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
     { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
     { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
     { COLOR_RED, COLOR_YELLOW, COLOR_GRAY },
     { COLOR_GRAY, COLOR_GRAY, COLOR_GREEN },
-    { COLOR_RED, COLOR_YELLOW, COLOR_GRAY }
-};
+    { COLOR_GRAY, COLOR_YELLOW, COLOR_GRAY },
+}};
 
 void LightCycle::NextStage() {
     if (cycleStage == CYCLE_LENGTH - 1) {
@@ -21,6 +21,6 @@ void LightCycle::NextStage() {
     cycleStage++;
 }
 
-const Color* LightCycle::GetLightColors() {
+LightColorsArray LightCycle::GetLightColors() {
     return LIGHT_CYCLE[cycleStage];
 }
