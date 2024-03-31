@@ -84,13 +84,13 @@ std::pair<SDL_Rect, SDL_Rect> TrafficLights::DrawBoxes() {
 
 void TrafficLights::DrawBulbs(SDL_Rect& lightBox, LightCycle& cycle) {
 	int circleRadius = static_cast<int>(lightBox.w * 0.22);
-	int spacing = (lightBox.h) / 3;
+	int spacing = lightBox.h / 3;
 
 	const Color* lightColors = cycle.GetLightColors();
 
 	for (int i = 0; i < 3; i++) {
 		int xPos = lightBox.x + (lightBox.w / 2);
-		int yPos = lightBox.y + (i * spacing) + (circleRadius + 1.5);
+		int yPos = lightBox.y + (i * spacing) + (circleRadius * 1.5);
 		app.SetDrawColor(const_cast<Color&>(lightColors[i]));
 		app.FillCircle(circleRadius, xPos, yPos);
 	}
