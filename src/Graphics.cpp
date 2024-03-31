@@ -5,19 +5,19 @@
 Graphics::Graphics(int width, int height) : width(width), height(height) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		std::cout << "Failed to initialise SDL: " << SDL_GetError() << "\n";
-		exit(1);
+		delete this;
 	}
 
 	SDL_CreateWindowAndRenderer(width, height, 0, &window, &renderer);
 
 	if (window == nullptr) {
 		std::cout << "Could not create Window: " << SDL_GetError() << "\n";
-		exit(1);
+		delete this;
 	}
 
 	if (renderer == nullptr) {
 		std::cout << "Could not create Renderer: " << SDL_GetError() << "\n";
-		exit(1);
+		delete this;
 	}
 }
 
