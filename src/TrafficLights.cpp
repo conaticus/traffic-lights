@@ -32,7 +32,7 @@ void TrafficLights::DrawTrafficLights() {
 	app.Render();
 
 	steady_clock::time_point prevTime = steady_clock::now();
-	steady_clock::time_point wakeupTime = prevTime + seconds(4);
+	steady_clock::time_point wakeupTime = prevTime + seconds(SECONDS_INTERVAL);
 
 	while (true) {
 		SDL_Event event;
@@ -58,7 +58,7 @@ void TrafficLights::DrawTrafficLights() {
 		app.Render();
 
 		prevTime = steady_clock::now();
-		wakeupTime = prevTime + seconds(4);
+		wakeupTime = prevTime + seconds(SECONDS_INTERVAL);
 	}
 }
 
