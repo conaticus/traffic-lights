@@ -13,12 +13,7 @@ const std::array<LightColorsArray, CYCLE_LENGTH> LIGHT_CYCLE {{
 }};
 
 void LightCycle::NextStage() {
-    if (cycleStage == CYCLE_LENGTH - 1) {
-        cycleStage = 0;
-        return;
-    }
-
-    cycleStage++;
+    cycleStage = (++cycleStage) % CYCLE_LENGTH;
 }
 
 LightColorsArray LightCycle::GetLightColors() {
