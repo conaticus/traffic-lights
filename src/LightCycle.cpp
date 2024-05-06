@@ -7,18 +7,13 @@ const std::array<LightColorsArray, CYCLE_LENGTH> LIGHT_CYCLE {{
     { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
     { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
     { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
-    { COLOR_RED, COLOR_YELLOW, COLOR_GRAY },
+    { COLOR_RED, COLOR_GRAY, COLOR_GRAY },
     { COLOR_GRAY, COLOR_GRAY, COLOR_GREEN },
     { COLOR_GRAY, COLOR_YELLOW, COLOR_GRAY },
 }};
 
 void LightCycle::NextStage() {
-    if (cycleStage == CYCLE_LENGTH - 1) {
-        cycleStage = 0;
-        return;
-    }
-
-    cycleStage++;
+    cycleStage = (++cycleStage) % CYCLE_LENGTH;
 }
 
 LightColorsArray LightCycle::GetLightColors() {
